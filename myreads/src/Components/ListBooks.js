@@ -1,27 +1,23 @@
-import React, { Component } from 'react';
+import React from "react";
 
-import { Link } from 'react-router-dom';
+import PropTypes from "prop-types";
 
-import ListBooksView from './ListBooksView';
-
-import { PropTypes } from 'prop-types';
-
-class ListBooks extends Component {
-	static propsTypes = {
-		books: PropTypes.array.isRequired,
-		onChange: PropTypes.func.isRequired,
+function ListBooks(props) {
+	const shelfUpdateHandler = (e) => {
+		props.clickShelfHandler(props.book, e.target.value);
 	};
 
-	
+	const img = props.book.imageLinks ? props.book.imageLinks.thumbnail : null;
 
-	render() {
-		
-		return (
-			<div className='list-books'>
-				
-			</div>
-		);
-	}
+	return (
+		<div>
+			
+		</div>
+	);
 }
+
+ListBooks.propTypes = {
+	clickShelfHandler: PropTypes.func.isRequired,
+};
 
 export default ListBooks;

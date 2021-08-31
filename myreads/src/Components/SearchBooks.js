@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import * as BooksAPI from './../BooksAPI';
 
-import ListBooksView from './ListBooksView';
+import ListBooks from './ListBooks';
 
 import PropTypes from 'prop-types';
 

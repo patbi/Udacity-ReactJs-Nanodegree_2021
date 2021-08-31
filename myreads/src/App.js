@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import * as BooksAPI from './BooksAPI';
-import ListBooks from './Components/ListBooks';
+import Books from './Components/Books';
 import SearchBooks from './Components/SearchBooks';
 
 import './App.css';
@@ -42,8 +42,8 @@ class App extends Component {
       <div className='app'>
         <BrowserRouter>
           <Switch>
-            <Route exact path='/' render={(props) => <ListBooks {...props } books={this.state.books} onChange={this.shelfHandlerChange} />} />
-            <Route path='/search' render={(props) => <SearchBooks {...props } mybooks={this.state.books} onChange={this.shelfHandlerChange} />} />
+            <Route exact path='/' render={(props) => <Books {...props} books={this.state.books} onChange={this.shelfHandlerChange} />} />
+            <Route path='/search' render={(props) => <SearchBooks {...props} mybooks={this.state.books} onChange={this.shelfHandlerChange} />} />
           </Switch>
         </BrowserRouter>
       </div>
