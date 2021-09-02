@@ -54,7 +54,7 @@ class SearchBooks extends Component {
 	};
 	shelfChangeHandler = (Books) => {
 		let mybooks = this.props.mybooks;
-		// if book is in current list, set current shelf to book.shelf
+		
 
 		Books.forEach((book) => {
 			book.shelf = 'none';
