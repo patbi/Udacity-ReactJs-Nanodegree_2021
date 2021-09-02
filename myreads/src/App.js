@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import * as BooksAPI from './BooksAPI';
 import Books from './Components/Books';
@@ -40,12 +40,12 @@ class App extends Component {
   render() {
     return (
       <div className='app'>
-        <BrowserRouter>
+        <Router>
           <Switch>
             <Route exact path='/' render={(props) => <Books {...props} books={this.state.books} onChange={this.shelfHandlerChange} />} />
             <Route path='/search' render={(props) => <SearchBooks {...props} mybooks={this.state.books} onChange={this.shelfHandlerChange} />} />
           </Switch>
-        </BrowserRouter>
+        </Router>
       </div>
     );
   }
