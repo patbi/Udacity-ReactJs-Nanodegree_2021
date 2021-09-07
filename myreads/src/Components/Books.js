@@ -31,22 +31,22 @@ class Books extends Component {
 	};
 
 	render() {
-		const { books } = this.props;
+		const { books } = this.props;		
 
-		const currentBookFilter = books.filter((book) => book.shelf === 'currentlyReading');
-		const wantReadFilter = books.filter((book) => book.shelf === 'wantToRead');
-		const readFilter = books.filter((book) => book.shelf === 'read');
+		const currentBookFilter = books.filter(book => book.shelf === 'currentlyReading');
+		const wantReadFilter = books.filter(book => book.shelf === 'wantToRead');
+		const readFilter = books.filter(book => book.shelf === 'read');
 
 		return (
 			<div className='list-books'>
 				<Container fluid
-						style={{
-		          backgroundColor: '#7952B3',
-		          fontWeight: 400,
-				  marginBottom: 50,
-				  color: 'white'
-		        }}>
-				  <h1>MyReads</h1>
+					style={{
+					  backgroundColor: '#7952B3',
+					  fontWeight: 400,
+					  marginBottom: 50,
+					  color: 'white'
+					}}>
+				    <h1>MyReads</h1>
 				</Container>
 				
 				<div className='list-books-content'>

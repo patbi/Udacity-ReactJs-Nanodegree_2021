@@ -23,9 +23,9 @@ class SearchBooks extends Component {
 
 	searchHander = (e) => {
 		let query = e.target.value;
-		this.setState(() => {
-			return { query: query };
-		});
+		this.setState(() => ({
+			query: query
+		}));
 		this.updateSearchHandler(query);
 	};
 
@@ -52,21 +52,23 @@ class SearchBooks extends Component {
 			}));
 		}
 	};
-	shelfChangeHandler = (Books) => {
-		let mybooks = this.props.mybooks;
-		
 
-		Books.forEach((book) => {
-			book.shelf = 'none';
-			mybooks.forEach((myBook) => {
-				if (myBook.id === book.id) {
+
+	shelfChangeHandler = (Books) => {
+		let mybooks = this.props.mybooks;		
+
+		for (const book of Books) {
+		    book.shelf = 'none';
+		    for (const myBook of mybooks) {
+		    	if (myBook.id === book.id) {
 					book.shelf = myBook.shelf;
 				}
-			});
-		});
+			}			
+		};
 		return Books;
 	};
 
+	
 	render() {
 		const { Books, searchError } = this.state;
 		return (

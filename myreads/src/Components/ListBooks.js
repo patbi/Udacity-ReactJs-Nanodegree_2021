@@ -2,12 +2,39 @@ import React from "react";
 
 import PropTypes from "prop-types";
 
+const options = [ 
+  {
+    label: "Currently Reading",
+    value: "currentlyReading",
+  },
+  {
+    label: "Want to Read",
+    value: "wantToRead",
+  },
+  {
+    label: "Read",
+    value: "read",
+  },
+  {
+    label: "None",
+    value: "none",
+  },
+];
+
 function ListBooks(props) {
 	const shelfUpdateHandler = (e) => {
 		props.clickShelfHandler(props.book, e.target.value);
-	};
+	};	
 
-	const img = props.book.imageLinks ? props.book.imageLinks.thumbnail : null;
+	const img = props.book.imageLinks;
+	let patbi;
+
+	if (img) {
+	   patbi = props.book.imageLinks.thumbnail;
+	} else {
+	   patbi = null;
+	}
+
 
 	return (
 		<div>
@@ -19,18 +46,14 @@ function ListBooks(props) {
 							style={{
 								width: 128,
 								height: 193,
-								backgroundImage: `url(${img})`,
+								backgroundImage: `url(${patbi})`,
 							}}
 						></div>
 						<div className="book-shelf-changer">
-							<select onChange={shelfUpdateHandler} value={props.book.shelf}>
-								<option value="move" disabled>
-									Move to...
-								</option>
-								<option value="currentlyReading">Currently Reading</option>
-								<option value="wantToRead">Want to Read</option>
-								<option value="read">Read</option>
-								<option value="none">None</option>
+							<select style = {{backgroundColor: '#7952B3', color: 'white'}} onChange={shelfUpdateHandler} value={props.book.shelf}>
+								{options.map((option) => (
+					              <option value={option.value}>{option.label}</option>
+					            ))}
 							</select>
 						</div>
 					</div>

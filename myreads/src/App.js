@@ -33,7 +33,9 @@ class App extends Component {
           books: currentState.books.filter((c) => c.id !== book.id).concat(book),
         }));
       })
-      .then(() => (shelf !== 'none' ? alert(`${book.authors} add successfully`) : null))
+      .then(() => (
+           shelf !== 'none' ? alert(`${book.authors} add successfully`) : null)           
+      )
       .catch(() => alert('Bad request'));
   };
 
