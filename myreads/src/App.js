@@ -34,7 +34,7 @@ class App extends Component {
         }));
       })
       .then(() => (
-           shelf !== 'none' ? alert(`${book.authors} add successfully`) : null)           
+        shelf !== 'none' ? alert(`${book.authors} add successfully`) : null)        
       )
       .catch(() => alert('Bad request'));
   };
