@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import * as BooksAPI from './BooksAPI';
 import Books from './Components/Books';
-import SearchBooks from './Components/SearchBooks';
+import Eye from './Components/Eye';
 
 import './App.css';
 
@@ -45,7 +45,7 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path='/' render={(props) => <Books {...props} books={this.state.books} onChange={this.shelfHandlerChange} />} />
-            <Route path='/search' render={(props) => <SearchBooks {...props} mybooks={this.state.books} onChange={this.shelfHandlerChange} />} />
+            <Route path='/eye' render={(props) => <Eye {...props} mybooks={this.state.lists} onChange={this.shelfHandlerChange} />} />
           </Switch>
         </Router>
       </div>
