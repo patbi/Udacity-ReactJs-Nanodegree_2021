@@ -21,7 +21,7 @@ const options = [
   },
 ];
 
-function Catalogue(props) {
+function ListBooks(props) {
 	const shelfUpdateHandler = (e) => {
 		props.clickShelfHandler(props.book, e.target.value);
 	};	
@@ -65,8 +65,8 @@ function Catalogue(props) {
 	);
 }
 
-Catalogue.propTypes = {
+ListBooks.propTypes = {
 	clickShelfHandler: PropTypes.func.isRequired,
 };
 
-export default Catalogue;
+export default ListBooks;

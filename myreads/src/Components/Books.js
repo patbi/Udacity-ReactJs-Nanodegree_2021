@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 
 import { Link } from 'react-router-dom';
 
-import Catalogue from './Catalogue';
+import ListBooks from './ListBooks';
 
 import { PropTypes } from 'prop-types';
 
@@ -22,7 +22,7 @@ class Books extends Component {
 				<div className='bookshelf-books'>
 					<ol className='books-grid'>
 						{books.map((book) => (
-							<Catalogue key={book.id} book={book} clickShelfHandler={this.props.onChange} />
+							<ListBooks key={book.id} book={book} clickShelfHandler={this.props.onChange} />
 						))}
 					</ol>
 				</div>
@@ -31,7 +31,7 @@ class Books extends Component {
 	};
 
 	render() {
-		const { books } = this.props;		
+		const { books } = this.props;
 
 		const currentBookFilter = books.filter(book => book.shelf === 'currentlyReading');
 		const wantReadFilter = books.filter(book => book.shelf === 'wantToRead');
@@ -58,7 +58,8 @@ class Books extends Component {
 				</div>
 
 				<div className='open-search'>
-					<Link to='/eye'>Add a book</Link>
+					{/* <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button> */}
+					<Link to='/search'>Add a book</Link>
 				</div>
 			</div>
 		);
