@@ -1,11 +1,12 @@
 import React from "react";
 import { update } from "./BooksAPI";
 import OptionsList from "./OptionsList";
+// import Select from "./Select";
 
-function ListBooks(props) {
+function CategorySelect(props) {
 	return (
 		<div>
-			<li>
+			<li key={props.e.id}>
 				<div className="book">
 					<div className="book-top">
 						<div
@@ -20,29 +21,29 @@ function ListBooks(props) {
 						></div>
 						<div className="book-shelf-changer">
 						    {props.e.shelf !== undefined || props.e.shelf !== 'none' ? (
-				              <select
-				                value={props.e.shelf ? props.e.shelf : "none"}
-				                onChange={(event) =>
-				                  update(props.e, event.target.value).then(() =>
-				                    props.shelfHandlerChange()
-				                  )
-				                }
-				              >
+					          <select
+					            value={props.e.shelf ? props.e.shelf : "none"}
+					            onChange={(event) =>
+					              update(props.e, event.target.value).then(() =>
+					                props.shelfHandlerChange()
+					              )
+					            }
+					          >
 							{ OptionsList }
 
 							 </select>
-				            ) : (
-				              <select
-				                value={"none"}
-				                onChange={(event) =>
-				                  update(props.e, event.target.value).then(() =>
-				                    props.shelfHandlerChange()
-				                  )
-				                }
-				              >
-				                { OptionsList }
-				              </select>
-				            )}
+					        ) : (
+					          <select
+					            value={"none"}
+					            onChange={(event) =>
+					              update(props.e, event.target.value).then(() =>
+					                props.shelfHandlerChange()
+					              )
+					            }
+					          >
+					            { OptionsList }
+					          </select>
+					        )}
 						</div>
 					</div>
 					<div className="book-title">{props.e.title}</div>
@@ -53,4 +54,4 @@ function ListBooks(props) {
 	);
 }
 
-export default ListBooks;
+export default CategorySelect;

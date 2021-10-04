@@ -1,5 +1,5 @@
 import React from "react";
-import BookDisplay from "./BookDisplay";
+import CategorySelect from "./CategorySelect";
 
 const ListBooks = (props) => {
   return (
@@ -8,7 +8,11 @@ const ListBooks = (props) => {
         .filter((e) => e.shelf === props.shelf)
         .map((e, index) => {
           return (
-            <BookDisplay key={index} e={e} shelfHandlerChange={props.shelfHandlerChange} />
+            <CategorySelect
+            	 key={index}
+            	 e={e} 
+            	 shelfHandlerChange={props.shelfHandlerChange}
+             />
           );
         })}
     </ol>

@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { getAll, update } from './BooksAPI';
-import Books from './Books';
-import Search from './Search';
+import { getAll, update, get } from './BooksAPI';
+import BooksItem from './BooksItem';
+import SearchBooks from './SearchBooks';
 
 import './App.css';
 
@@ -17,19 +17,18 @@ class App extends Component {
   componentDidMount = () => {
     let delay = Math.floor(Math.random() * 5000)
       setTimeout(() => {
-        getAll().then((books) => {
-        this.setState({ books });
-        });
+        getAll()
+          .then((books) => this.setState({books: [...books]}))
       }, delay)
-    }
+  }
 
 
   shelfHandlerChange = (book, shelf) => {
     update(book, shelf)
       .then(() => {
         book.shelf = shelf;
-        this.setState((currentState) => ({
-          books: currentState.books.filter((c) => c.id !== book.id).concat(book),
+        this.setState((prevState) => ({
+          books: prevState.books.filter((c) => c.id !== book.id).concat(book),
         }));
       })
       .then(() => (
@@ -44,15 +43,16 @@ class App extends Component {
         <Router>
           <Switch>
             <Route 
-              exact path='/'
-              render={(props) => <Books books={this.state.books}
+              exact
+              path='/'
+              render={(props) => <BooksItem books={this.state.books}
               onChange={this.shelfHandlerChange}
               />
             }
          />
             <Route 
-              path='/search'
-              render={(props) => <Search mybooks={this.state.books}
+              path='/eye'
+              render={(props) => <SearchBooks mybooks={this.state.books}
               onChange={this.shelfHandlerChange}
              />
             }
