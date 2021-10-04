@@ -19,7 +19,7 @@ function ListBooks(props) {
 				            }}
 						></div>
 						<div className="book-shelf-changer">
-						    {props.e.shelf !== undefined || props.e.shelf !== none ? (
+						    {props.e.shelf !== undefined || props.e.shelf !== 'none' ? (
 				              <select
 				                value={props.e.shelf ? props.e.shelf : "none"}
 				                onChange={(event) =>
@@ -45,8 +45,8 @@ function ListBooks(props) {
 				            )}
 						</div>
 					</div>
-					<div className="book-title">{props.book.title}</div>
-					<div className="book-authors">{props.book.authors}</div>
+					<div className="book-title">{props.e.title}</div>
+					<div className="book-authors">{props.e.authors}</div>
 				</div>
 			</li>
 		</div>
