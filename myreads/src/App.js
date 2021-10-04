@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import * as BooksAPI from './BooksAPI';
-import Books from './Components/Books';
-import SearchBooks from './Components/SearchBooks';
+import { getAll, update } from './BooksAPI';
+import Books from './Books';
+import Search from './Search';
 
 import './App.css';
 
@@ -16,9 +16,8 @@ class App extends Component {
 
   componentDidMount = () => {
     let delay = Math.floor(Math.random() * 5000)
-
       setTimeout(() => {
-        BooksAPI.getAll().then((books) => {
+        getAll().then((books) => {
         this.setState({ books });
         });
       }, delay)
@@ -26,7 +25,7 @@ class App extends Component {
 
 
   shelfHandlerChange = (book, shelf) => {
-    BooksAPI.update(book, shelf)
+    update(book, shelf)
       .then(() => {
         book.shelf = shelf;
         this.setState((currentState) => ({
@@ -44,8 +43,20 @@ class App extends Component {
       <div className='app'>
         <Router>
           <Switch>
-            <Route exact path='/' render={(props) => <Books {...props} books={this.state.books} onChange={this.shelfHandlerChange} />} />
-            <Route path='/search' render={(props) => <SearchBooks {...props} mybooks={this.state.books} onChange={this.shelfHandlerChange} />} />
+            <Route 
+              exact path='/'
+              render={(props) => <Books books={this.state.books}
+              onChange={this.shelfHandlerChange}
+              />
+            }
+         />
+            <Route 
+              path='/search'
+              render={(props) => <Search mybooks={this.state.books}
+              onChange={this.shelfHandlerChange}
+             />
+            }
+          />
           </Switch>
         </Router>
       </div>
