@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { Link } from 'react-router-dom';
 
-import * as BooksAPI from './BooksAPI';
+import * as BooksAPI from './BooksAPI'
 
 import CategorySelect from "./CategorySelect";
 
@@ -16,13 +16,16 @@ class SearchBooks extends Component {
     this.searchresults = this.searchresults.bind(this);
   }
 
-	searchresults = (e) => {
-    e.target.value === ""
-      ? this.setState((prevState) => {
-          prevState.books = [];
+	searchresults = async (searchTerm) => {
+    if (searchTerm.target.value === "") {
+    	await this.setState((currentState) => {
+          currentState.books = [];
         })
-      : BooksAPI.search(e.target.value, 30).then((data) => {
-          this.setState((prevState) => {
+    } else {
+    	await BooksAPI
+    	.search(searchTerm.target.value, 30)
+    	.then((data) => {
+          this.setState((currentState) => {
             if (data.error) {
               return {error : data.error}
             } else {
@@ -34,12 +37,12 @@ class SearchBooks extends Component {
             }
           });
         });
+    }      
   };;
 
 	
 	
-	render() {
-		const { Books, searchError } = this.state;
+	render() {		
 		return (
 			<div className='search-books'>
 				<div className='search-books-bar'>

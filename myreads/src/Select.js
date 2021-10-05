@@ -3,7 +3,7 @@ import { update } from "./BooksAPI";
 import OptionsList from "./OptionsList";
 
 
-const Select = (props) => {
+export const Select = (props) => {
   const dropdownList = null;
   if (props.e.shelf !== undefined || props.e.shelf !== 'none') {
     dropdownList = (
@@ -35,5 +35,3 @@ const Select = (props) => {
   }
   return <div className='book-shelf-changer'>{dropdownList}</div>;
 };
-
-export default Select;

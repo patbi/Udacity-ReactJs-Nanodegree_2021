@@ -20,15 +20,15 @@ const BooksItem = (props) => {
       </div>
       <div className="list-books-content">
         <div>
-          {options.slice(1, 4).map((e) => {
+          {options.slice(1, 4).map((b) => {
             return (
-              <div key={e.key} className="bookshelf">
-                <h2 className="bookshelf-title">{e.value}</h2>
+              <div key={b.key} className="bookshelf">
+                <h2 className="bookshelf-title">{b.value}</h2>
                 <div className="bookshelf-books">
                   <ListBooks
                     books={props.books}
-                    shelf={e.key}
-                    shelfHandlerChange={props.shelfHandlerChange}
+                    shelf={b.key}
+                    onChange={props.shelfHandlerChange}
                   />
                 </div>
               </div>

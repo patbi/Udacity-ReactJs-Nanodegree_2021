@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { getAll, update, get } from './BooksAPI';
+import { getAll, update } from './BooksAPI';
 import BooksItem from './BooksItem';
 import SearchBooks from './SearchBooks';
 
 import './App.css';
 
 
-class App extends Component {
+class BookApp extends Component {
   state = { 
     books: [],
   };
@@ -18,21 +18,31 @@ class App extends Component {
     let delay = Math.floor(Math.random() * 5000)
       setTimeout(() => {
         getAll()
-          .then((books) => this.setState({books: [...books]}))
+          .then(
+            (books) => this.setState(
+              {books: [...books]}
+            ))
       }, delay)
   }
 
 
-  shelfHandlerChange = (book, shelf) => {
-    update(book, shelf)
+  shelfHandlerChange = async (bookId, shelf) => {
+    update(bookId, shelf)
       .then(() => {
-        book.shelf = shelf;
-        this.setState((prevState) => ({
-          books: prevState.books.filter((c) => c.id !== book.id).concat(book),
+        bookId.shelf = shelf;
+        this.setState((prevShef) => ({
+          books: prevShef.books.filter(
+            (k) => k.id !== bookId.id
+          )
+          .concat(bookId),
         }));
       })
       .then(() => (
-        shelf !== 'none' ? alert(`${book.authors} add successfully`) : null)        
+        shelf !== 'none' 
+        ? 
+        alert(`${bookId.authors} add successfully`)
+         : null
+         )        
       )
       .catch(() => alert('Bad request'));
   };
@@ -64,4 +74,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default BookApp;
