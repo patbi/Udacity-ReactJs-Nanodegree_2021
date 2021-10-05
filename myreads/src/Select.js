@@ -2,11 +2,12 @@ import React from "react";
 import { update } from "./BooksAPI";
 import OptionsList from "./OptionsList";
 
+
 const Select = (props) => {
-  return (
-    <div className="book-shelf-changer">
-	    {props.e.shelf !== undefined || props.e.shelf !== 'none' ? (
-          <select
+  const dropdownList = null;
+  if (props.e.shelf !== undefined || props.e.shelf !== 'none') {
+    dropdownList = (
+         <select
             value={props.e.shelf ? props.e.shelf : "none"}
             onChange={(event) =>
               update(props.e, event.target.value).then(() =>
@@ -17,8 +18,10 @@ const Select = (props) => {
 		{ OptionsList }
 
 		 </select>
-        ) : (
-          <select
+    );
+  } else {
+    dropdownList = (
+       <select
             value={"none"}
             onChange={(event) =>
               update(props.e, event.target.value).then(() =>
@@ -28,9 +31,9 @@ const Select = (props) => {
           >
             { OptionsList }
           </select>
-        )}
-	</div>
-  );
+    );
+  }
+  return <div className='book-shelf-changer'>{dropdownList}</div>;
 };
 
 export default Select;
