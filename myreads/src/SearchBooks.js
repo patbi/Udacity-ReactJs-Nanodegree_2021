@@ -24,14 +24,17 @@ class SearchBooks extends Component {
       : BooksAPI.search(e.target.value, 30).then((data) => {
           this.setState((prevState) => {
             if (data.error) {
-              prevState.error = data.error;
+              return {error : data.error}
             } else {
-              prevState.error = undefined;
-              prevState.books = data;
+              return {
+                error : null,
+                books : data
+              };
+
             }
           });
         });
-  };
+  };;
 
 	
 	
