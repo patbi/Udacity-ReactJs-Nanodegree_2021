@@ -3,7 +3,7 @@ import { update } from "./BooksAPI";
 import OptionsList from "./OptionsList";
 
 const Select = (props) => {
-  const dropdownList = null;
+  let dropdownList = null;
   if (props.book.shelf !== undefined || props.book.shelf !== 'none') {
     dropdownList = (
          <select
