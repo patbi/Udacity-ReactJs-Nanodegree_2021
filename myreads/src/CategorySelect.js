@@ -1,5 +1,7 @@
 import React from "react";
-import { Select } from "./Select";
+import { update } from "./BooksAPI";
+import OptionsList from "./OptionsList";
+// import { Select } from "./Select";
 
 function CategorySelect(props) {
 	return (
@@ -20,8 +22,32 @@ function CategorySelect(props) {
 						
 
 						  <div className="book-shelf-changer">
-				            { <Select props="" /> }
+				            {props.e.shelf !== undefined || props.e.shelf !== 'none' ? (
+							    <select
+							      value={props.e.shelf ? props.e.shelf : "none"}
+							      onChange={(event) =>
+							        update(props.e, event.target.value).then(() =>
+							          props.shelfHandlerChange()
+							        )
+							      }
+							    >
+							      {OptionsList}
+							    </select>
+							  ) : (
+							    <select
+							      value={"none"}
+							      onChange={(event) =>
+							        update(props.e, event.target.value).then(() =>
+							          props.shelfHandlerChange()
+							        )
+							      }
+							    >
+							      {OptionsList}
+							    </select>
+							  )} 
 				          </div>
+
+				          
 					</div>
 					<div className="book-title">{props.e.title}</div>
 					<div className="book-authors">{props.e.authors}</div>

@@ -4,10 +4,10 @@ import OptionsList from "./OptionsList";
 
 export const Select = (props) => {
   const dropdownList = null;
-  if (props.shelf !== undefined || props.shelf !== 'none') {
+  if (props.e.shelf !== undefined || props.e.shelf !== 'none') {
     dropdownList = (
          <select
-            value={props.shelf ? props.shelf : "none"}
+            value={props.e.shelf ? props.e.shelf : "none"}
             onChange={(event) =>
               update(props.e, event.target.value).then(() =>
                 props.shelfHandlerChange()
