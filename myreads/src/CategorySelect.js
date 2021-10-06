@@ -19,10 +19,9 @@ function CategorySelect(props) {
 						></div>
 						
 
-						 <div className="book-shelf-changer">
-				           { Select }	
-				         </div> 
-
+						  <div className="book-shelf-changer">
+				            { <Select props="" /> }
+				          </div>
 					</div>
 					<div className="book-title">{props.e.title}</div>
 					<div className="book-authors">{props.e.authors}</div>

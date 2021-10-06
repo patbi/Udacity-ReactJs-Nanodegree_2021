@@ -16,13 +16,13 @@ class SearchBooks extends Component {
     this.searchresults = this.searchresults.bind(this);
   }
 
-	searchresults = async (searchTerm) => {
+	searchresults = (searchTerm) => {
     if (searchTerm.target.value === "") {
-    	await this.setState((currentState) => {
+    	this.setState((currentState) => {
           currentState.books = [];
         })
     } else {
-    	await BooksAPI
+    	BooksAPI
     	.search(searchTerm.target.value, 30)
     	.then((data) => {
           this.setState((currentState) => {

@@ -25,27 +25,13 @@ class BookApp extends Component {
       }, delay)
   }
 
-
-  shelfHandlerChange = async (bookId, shelf) => {
+  shelfHandlerChange = (bookId, shelf) => { 
     update(bookId, shelf)
-      .then(() => {
-        bookId.shelf = shelf;
-        this.setState((prevShef) => ({
-          books: prevShef.books.filter(
-            (k) => k.id !== bookId.id
-          )
-          .concat(bookId),
-        }));
-      })
-      .then(() => (
-        shelf !== 'none' 
-        ? 
-        alert(`${bookId.authors} add successfully`)
-         : null
-         )        
-      )
-      .catch(() => alert('Bad request'));
-  };
+        .then(() => (
+         shelf !== 'none' 
+         ? alert(`${bookId.authors} add successfully`) 
+         : null ))
+        .catch(() => alert('Bad request')); };
 
   render() {
     return (
