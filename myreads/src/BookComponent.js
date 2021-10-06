@@ -1,6 +1,6 @@
 import React from "react";
 import Select from "./Select";
-// import { update } from "./BooksAPI";
+// import * as BooksAPI from './BooksAPI'
 // import OptionsList from "./OptionsList";
 
 function BookComponent(props) {
@@ -21,9 +21,12 @@ function BookComponent(props) {
 						></div>
 						
 
-						  <div className="book-shelf-changer">
-				            <Select book={props.book} shelfHandlerChange={props.shelfHandlerChange} />
-				          </div>
+						  
+				            <Select 
+				            	book={props.book}
+				            	shelfHandlerChange={props.shelfHandlerChange}
+				             />
+				          
 
 				          
 					</div>

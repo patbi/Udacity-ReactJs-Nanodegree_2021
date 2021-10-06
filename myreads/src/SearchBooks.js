@@ -60,12 +60,12 @@ class SearchBooks extends Component {
 			            <p>{this.state.error}</p>
 			          ) : (
 			            <ol className="books-grid">
-			              {this.state.books.map((e, index) => {
+			              {this.state.books.map((book, index) => {
 			                return (
 			                  <BookComponent
 			                    key={index}
-			                    e={e}
-			                    shelf={e.key}
+			                    book={book}
+			                    shelf={book.key}
 			                    shelfHandlerChange={this.props.shelfHandlerChange}
 			                  />
 			                );
