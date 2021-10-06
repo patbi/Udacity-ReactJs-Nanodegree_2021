@@ -1,16 +1,16 @@
 import React from "react";
-import CategorySelect from "./CategorySelect";
+import BookComponent from "./BookComponent";
 
 const ListBooks = (props) => {
   return (
     <ol className="books-grid">
       {props.books
-        .filter((e) => e.shelf === props.shelf)
-        .map((e, index) => {
+        .filter((book) => book.shelf === props.shelf)
+        .map((book, index) => {
           return (
-            <CategorySelect
+            <BookComponent
             	 key={index}
-            	 e={e} 
+            	 book={book} 
             	 shelfHandlerChange={props.shelfHandlerChange}
              />
           );

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import * as BooksAPI from './BooksAPI'
 
-import CategorySelect from "./CategorySelect";
+import BookComponent from "./BookComponent";
 
 
 class SearchBooks extends Component {
@@ -62,7 +62,7 @@ class SearchBooks extends Component {
 			            <ol className="books-grid">
 			              {this.state.books.map((e, index) => {
 			                return (
-			                  <CategorySelect
+			                  <BookComponent
 			                    key={index}
 			                    e={e}
 			                    shelf={e.key}

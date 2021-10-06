@@ -1,10 +1,10 @@
 import React from "react";
 import { options } from "./Constants";
 
-const OptionsList = options.map((i) => {
+const OptionsList = options.map((product) => {
   return (
-    <option key={i.key} disabled={i.disabled} value={i.key}>
-      {i.value}
+    <option key={product.key} disabled={product.disabled} value={product.key}>
+      {product.value}
     </option>
   );
 });
