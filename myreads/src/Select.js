@@ -2,7 +2,6 @@ import React from "react";
 import { update } from "./BooksAPI";
 import OptionsList from "./OptionsList";
 
-
 export const Select = (props) => {
   const dropdownList = null;
   if (props.e.shelf !== undefined || props.e.shelf !== 'none') {

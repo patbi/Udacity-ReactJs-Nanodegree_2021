@@ -9,14 +9,14 @@ const BooksItem = (props) => {
     <div className="list-books">
       <div className="list-books-title">
       <Container fluid
-		style={{
-		  backgroundColor: '#7952B3',
-		  fontWeight: 400,
-		  marginBottom: 50,
-		  color: 'white'
-		}}>
+    		style={{
+    		  backgroundColor: '#7952B3',
+    		  fontWeight: 400,
+    		  marginBottom: 50,
+    		  color: 'white'
+    		}}>
         <h1>MyReads</h1>
-        </Container>
+      </Container>
       </div>
       <div className="list-books-content">
         <div>
