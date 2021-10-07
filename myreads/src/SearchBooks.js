@@ -11,27 +11,34 @@ class SearchBooks extends Component {
  constructor(props) {
     super(props);
     this.state = {
-      books: [],
+      results: [],
+      error : ''
     };
     this.searchresults = this.searchresults.bind(this);
   }
 
-	searchresults = (searchTerm) => {
+	searchresults = async (searchTerm) => {
+	await this.setState({
+      searchTerm : searchTerm
+    })
     if (searchTerm.target.value === "") {
     	this.setState((currentState) => {
-          currentState.books = [];
+          currentState.results = [];
         })
     } else {
     	BooksAPI
     	.search(searchTerm.target.value, 30)
     	.then((data) => {
           this.setState((currentState) => {
-            if (data.error) {
-              return {error : data.error}
+            if (data.hasOwnProperty('error')) {
+              this.setState({
+            	results : [],
+            	error : 'No results found, please try another query.'
+          })
             } else {
               return {
                 error : null,
-                books : data
+                results : data
               };
 
             }
@@ -60,7 +67,7 @@ class SearchBooks extends Component {
 			            <p>{this.state.error}</p>
 			          ) : (
 			            <ol className="books-grid">
-			              {this.state.books.map((book, index) => {
+			              {this.state.results.map((book, index) => {
 			                return (
 			                  <BookComponent
 			                    key={index}
