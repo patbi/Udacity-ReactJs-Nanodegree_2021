@@ -10,7 +10,7 @@ const Select = (props) => {
             value={props.book.shelf ? props.book.shelf : "none"}
             onChange={(event) =>
               update(props.book, event.target.value).then(() =>
-                props.shelfHandlerChange()
+                props.shelfHandlerChange
               )
             }
           >
@@ -24,7 +24,7 @@ const Select = (props) => {
             value={"none"}
             onChange={(event) =>
               update(props.book, event.target.value).then(() =>
-                props.shelfHandlerChange()
+                props.shelfHandlerChange
               )
             }
           >
